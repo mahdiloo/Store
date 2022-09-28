@@ -1,0 +1,13 @@
+﻿@using Store_Application.Services.Common.Queries.GetMenuItem;
+@model List<MenuItemDto>;
+@{
+    Layout = null;
+}
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="#"> @item.Name </a>
+        </li>
+    }
+</ul>

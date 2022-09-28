@@ -1,0 +1,11 @@
+﻿
+@using Store_Application.Services.Common.Queries.GetCategory;
+@model   List<CategoryDto>; 
+@{
+    Layout = null;
+}
+
+<form asp-controller="Products" asp-action="Index" class="form-search">
+    <button type="submit"><span class="icon-search"></span></button>
+    <input type="search" class="span1" name="SearchKey"  placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…">
+</form>

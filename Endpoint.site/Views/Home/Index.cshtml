@@ -1,0 +1,203 @@
+﻿@using EndPoint.Site.Models.ViewModels.HomePages;
+@using Store_Domain.Entities.HomePages
+@model HomePageViewModel;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="fullwidthbanner-container">
+    <div class="fullwidthbanner">
+        <ul>
+            @foreach (var item in Model.Sliders)
+            {
+                <li data-transition="premium-random" data-slotamount="3">
+
+                    <a href="@item.Link">
+                        <img src="@item.Src" alt="slider img" style="width:100%;height:100%;" />
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tp-bannertimer"></div>
+    </div>
+    <!--  ==========  -->
+    <!--  = Nav Arrows =  -->
+    <!--  ==========  -->
+    <div id="sliderRevLeft"><i class="icon-chevron-left"></i></div>
+    <div id="sliderRevRight"><i class="icon-chevron-right"></i></div>
+</div>
+<!-- /slider revolution -->
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="push-up over-slider blocks-spacer">
+
+                <!--  ==========  -->
+                <!--  = Three Banners =  -->
+                <!--  ==========  -->
+                <div class="row">
+                    @foreach (var item in Model.PageImages.Where(p => p.ImageLocation == ImageLocation.G1).ToList())
+                    {
+                        <div class="span4">
+                            @*   <a href="#" class="btn btn-block banner">*@
+                            <img src="~/@item.Src">
+                            @* </a>*@
+                        </div>
+                    }
+
+                </div> <!-- /three banners -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--  = Featured Items =  -->
+ <!-- /container -->
+<div class="owl-stage-outer">
+    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2234px;">
+<div class="row">
+        <h3>دوربین</h3>
+        @foreach (var item in Model.Camera)
+        {
+            <div class="span4">
+                <div class="product">
+                    <div class="product-img featured">
+                        <div class="picture">
+                            <img src="~/@item.ImageSrc" />
+                            <div class="img-overlay">
+                                <a href="~/Products/Detail/@item.Id" class="btn more btn-primary">توضیحات بیشتر</a>
+                                    <a hhref="~/Cart/AddToCart?ProductId=@item.Id" class="btn buy btn-danger">خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles">
+                        <h4 class="title">@item.Title</h4>
+                        <h5 class="no-margin">@item.Price.ToString("n0")</h5>
+                        <span>تومان</span>
+                    </div>
+                    @*  <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>*@
+                    <p class="center-align stars">
+
+
+                        @for (int i = 1; i <= item.Star; i++)
+                        {
+                            <span class="icon-star stars-clr"></span>
+                        }
+                        @for (int i = 1; i <= (5 - item.Star); i++)
+                        {
+                            <span class="icon-star"></span>
+                        }
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+
+        <div class="row">
+        <h3>موبایل</h3>
+        @foreach (var item in Model.Mobile)
+        {
+            <div class="span4">
+                <div class="product">
+                    <div class="product-img featured">
+                        <div class="picture">
+                            <img src="~/@item.ImageSrc"/>
+                            <div class="img-overlay">
+                                <a href="~/Products/Detail/@item.Id" class="btn more btn-primary">توضیحات بیشتر</a>
+                                    <a href="~/Cart/AddToCart?ProductId=@item.Id" class="btn buy btn-danger">خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles">
+                        <h4 class="title">@item.Title</h4>
+                        <h5 class="no-margin">@item.Price.ToString("n0")</h5>
+                        <span>تومان</span>
+                    </div>
+                    @*  <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>*@
+                    <p class="center-align stars">
+
+
+                        @for (int i = 1; i <= item.Star; i++)
+                        {
+                            <span class="icon-star stars-clr"></span>
+                        }
+                        @for (int i = 1; i <= (5 - item.Star); i++)
+                        {
+                            <span class="icon-star"></span>
+                        }
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+        <div class="row">
+        <h3>لپ تاپ</h3>
+        @foreach (var item in Model.Laptop)
+        {
+            <div class="span4">
+                <div class="product">
+                    <div class="product-img featured">
+                        <div class="picture">
+                            <img src="~/@item.ImageSrc" />
+                            <div class="img-overlay">
+                                <a href="~/Products/Detail/@item.Id" class="btn more btn-primary">توضیحات بیشتر</a>
+                                    <a href="~/Cart/AddToCart?ProductId=@item.Id" class="btn buy btn-danger">خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles">
+                        <h4 class="title">@item.Title</h4>
+                        <h5 class="no-margin">@item.Price.ToString("n0")</h5>
+                        <span>تومان</span>
+                    </div>
+                    @*  <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>*@
+                    <p class="center-align stars">
+
+
+                        @for (int i = 1; i <= item.Star; i++)
+                        {
+                            <span class="icon-star stars-clr"></span>
+                        }
+                        @for (int i = 1; i <= (5 - item.Star); i++)
+                        {
+                            <span class="icon-star"></span>
+                        }
+                    </p>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
+</div>
+<div class="container blocks-spacer-last">
+
+    <!--  ==========  -->
+    <!--  = Title =  -->
+    <!--  ==========  -->
+    <div class="row">
+        <div class="span12">
+            <div class="main-titles lined">
+                <h2 class="title"><span class="light">برند های</span> ما</h2>
+                <div class="arrows">
+                    <a href="#" class="icon-chevron-right" id="brandsRight"></a>
+                    <a href="#" class="icon-chevron-left" id="brandsLeft"></a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /title -->
+    <!--  ==========  -->
+    <!--  = Logos =  -->
+    <!--  ==========  -->
+    <div class="row">
+        <div class="span12">
+            <div class="brands carouFredSel" data-nav="brands" data-autoplay="true">
+                @foreach (var item in Model.PageImages.Where(p => p.ImageLocation == ImageLocation.Brands).ToList())
+                {
+                    <img src="@item.Src" alt="" width="203" height="104" />
+                }
+            </div>
+        </div>
+    </div> <!-- /logos -->
+</div>

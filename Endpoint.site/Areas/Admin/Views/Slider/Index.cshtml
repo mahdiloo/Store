@@ -1,0 +1,240 @@
+﻿@*@using Store_Application.Services.Common.Queries.GetSlider;
+@model List<SliderDto>*@
+@using EndPoint.Site.Models.ViewModels.HomePages;
+@model HomePageViewModel;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Adminlayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <section id="configuration">
+
+            @*<div class="row">*@
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap bar-success">
+                                <h4 class="card-title">لیست اسلایدر ها</h4>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show">
+                            <div class="card-block card-dashboard">
+
+                                <a href="~/admin/Slider/Create" class="btn btn-success">افزودن اسلایدر جدید</a>
+
+                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped table-bordered zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="آدرس لینک: activate to sort column descending" style="width: 222px;">آدرس لینک</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="تصویر اسلایدر: activate to sort column descending" style="width: 222px;">تصویر اسلایدر</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending" style="width: 222px;"></th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var item in Model.Sliders)
+                                                {
+                                                    <tr role="row" class="odd">
+                                                        <td class="sorting_1">@item.Link</td>
+                                                        <td class="sorting_1">
+                                                            <img src="~/@item.Src" width="60" height="50" />
+                                                        </td>
+                                                        <td>
+                                                            <button onclick="Delete('@item.Id')" class="btn btn-danger">حذف</button>
+                                                        </td>
+                                                        <td>
+                                                        <a href="~/Admin/Slider/Edit?Id=@item.Id" class="btn btn-success text-white">ویرایش </a>
+                                                           @* <a onclick="ShowModalEdit('@item.Id','@item.Link','@item.Src')" class="btn btn-success text-white">ویرایش </a>*@
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+    </div>
+</div>
+@section Scripts
+    {
+
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+
+
+        function Delete(Id) {
+            swal.fire({
+                title: 'حذف اسلایدر',
+                text: "کاربر گرامی از حذف مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#7cacbe',
+                confirmButtonText: 'بله ، حذف شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    var postData = {
+                        'Id': Id,
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "Delete",
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+                            }
+                            else {
+
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            })
+        }
+
+
+        function Edit() {
+            var postdata = new FormData();
+            {
+                data.append("Id", $("#Edit_Id").val());
+                data.append("Link", $("#Edit_link").val());
+                //$('#Edit_file').val(data.Images);
+                //data.append("Src", document.getElementById('file').files[0].lastModifiedDate);
+                //دریافت عکس های انتخاب شده توسط کاربر و قرار دادن عکس ها در متغیر data
+                //var productImages = document.getElementById("Images");
+
+                //if (productImages.files.length > 0) {
+                //    for (var i = 0; i < productImages.files.length; i++) {
+                //        data.append('Images' + i, productImages.files[i]);
+                //    }
+                //}
+
+        
+
+            }
+            //var Id = $("#Edit_Id").val();
+            //var linkname = $("#Edit_link").val();
+
+            //var postData = {
+            //    'Id': Id,
+            //    'Link': linkname,
+            //};
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "Edit",
+                data: postdata,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+            $('#Edit').modal('hide');
+        }
+        function ShowModalEdit(Id, link, Src) {
+            $('#Edit_link').val(link)
+            $('#Edit_Id').val(Id)
+            //$('#Images').val(Src)
+           
+            //const dataTransfer = new DataTransfer();
+            //dataTransfer.items.add(myFile);//your file(s) reference(s)
+            //document.getElementById('input_field').files = dataTransfer.files;
+
+
+            $('#Edit').modal('show');
+
+        }
+    </script>
+        }
+
+    @section Modals
+    {
+    <!-- Modal Edit -->
+    <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ویرایش اسلایدر</h5>
+                    <span style="text-align:left">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:red;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <input type="hidden" id="Edit_Id" />
+                            <label for="basicInput">آدرس لینک</label>
+                            <input type="text" class="form-control" id="Edit_link" asp-for="Edit_link">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="basicInput">تصویر</label>
+                            <input type="file" class="form-control" accept="image/*" id="Images">
+                        </fieldset>
+                    </div>
+                    <div>
+                        <a class="btn btn-primary" onclick="Edit()">اعمال تغییرات</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

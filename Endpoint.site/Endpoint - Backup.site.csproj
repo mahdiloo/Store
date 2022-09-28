@@ -1,0 +1,104 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\AdminTemplate\.git\objects\info\" />
+    <Folder Include="wwwroot\AdminTemplate\.git\refs\tags\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\AdminTemplate\.git\config" />
+    <None Include="wwwroot\AdminTemplate\.git\description" />
+    <None Include="wwwroot\AdminTemplate\.git\HEAD" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\applypatch-msg.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\commit-msg.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\post-update.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\pre-applypatch.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\pre-commit.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\pre-merge-commit.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\pre-push.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\pre-rebase.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\pre-receive.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\push-to-checkout.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\hooks\update.sample" />
+    <None Include="wwwroot\AdminTemplate\.git\index" />
+    <None Include="wwwroot\AdminTemplate\.git\info\exclude" />
+    <None Include="wwwroot\AdminTemplate\.git\logs\HEAD" />
+    <None Include="wwwroot\AdminTemplate\.git\logs\refs\heads\master" />
+    <None Include="wwwroot\AdminTemplate\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\AdminTemplate\.git\objects\pack\pack-266e17e1e42b90b7c80a3d34639b0954c48dfe14.idx" />
+    <None Include="wwwroot\AdminTemplate\.git\objects\pack\pack-266e17e1e42b90b7c80a3d34639b0954c48dfe14.pack" />
+    <None Include="wwwroot\AdminTemplate\.git\packed-refs" />
+    <None Include="wwwroot\AdminTemplate\.git\refs\heads\master" />
+    <None Include="wwwroot\AdminTemplate\.git\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+	  <PackageReference Include="LazZiya.TagHelpers" Version="6.0.2" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+ 
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Store_Persistence\Store_Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

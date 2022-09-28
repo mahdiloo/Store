@@ -1,0 +1,162 @@
+﻿@using Store_Application.Services.Carts;
+@model CartDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sumTota = 0;
+}
+<center><h2><span style="color:red;">@TempData["Warning"]</span></h2></center>
+<div class="container">
+    <div class="row">
+        <form action="#">
+            <table width="1000px">
+                <thead>
+                    <tr>
+                        <th scope="col">نام محصول</th>
+                        <th scope="col">تعداد مورد نیاز</th>
+                        <th scope="col">قیمت</th>
+                        <th scope="col">مجموع</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <th scope="row">
+                                <div class="product-thumbnail-img">
+                                    <a href="#">
+                                        <img src="~/@item.Images" width="124" height="124">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#">
+                                        @item.Product
+                                    </a>
+
+                                </div>
+                            </th>
+                            <td>
+                                    @*  <div class="quantity">
+                                <input type="number" min="1" max="100" step="1" value="@item.Count" id="count-@item.Id">
+                                <div class="quantity-nav">
+                                <div class="quantity-button quantity-up" onclick="AddCount('@item.Id')">
+                                +
+                                </div>
+                                <div class="quantity-button quantity-down" onclick="lowCount('@item.Id')">-</div>
+                                </div>
+                                </div>*@
+                                    <form action="#" class="form form-inline clearfix">
+                                        <div class="numbered">
+                                            <input type="text" id="count-@item.Id" value="@item.Count" class="tiny-size">
+                                            <span class="clickable add-one icon-plus-sign-alt" onclick="AddCount('@item.Id')"></span>
+                                            <span class="clickable remove-one icon-minus-sign-alt" onclick="lowCount('@item.Id')"></span>
+                                        </div>
+                                    </form>
+
+                            </td>
+                            <td>
+                                <span class="amount">
+                                    @item.Price.ToString("n0") 
+                                    <span>تومان</span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="amount">
+                                    @{
+                                        int total = item.Price * item.Count;
+                                        sumTota += total;
+                                    }
+                                    @total.ToString("n0") 
+                                    <span>تومان</span>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="~/cart/remove?ProductId=@item.Id" class="btn btn-danger"> حذف </a>
+                            </td>
+                        </tr>
+                       
+                    }
+
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="cart-collaterals">
+        <div class="totals d-block">
+            <h3 class="Total-cart-total">مجموع کل سبد خرید</h3>
+            <div class="checkout-summary">
+                <ul class="checkout-summary-summary">
+                    @* <li class="cart-subtotal">*@
+                    <span class="amount">قیمت کل:</span>
+
+
+                    <h6> @sumTota.ToString("n0") تومان</h6>
+                    @* </li>*@
+                    @* <li class="shipping-totals">*@
+
+                    <div class="shipping-totals-item">
+                        <div class="shipping-totals-outline">
+                            <span class="amount">حمل و نقل</span>
+                            <label for="#" class="outline-radio">
+                                <input type="radio" name="payment_method" id="payment-option-online" checked="checked">
+                                <span class="outline-radio-check"></span>
+                            </label>
+                            <label for="#" class="shipping-totals-title-row">
+                                <div class="shipping-totals-title">حمل و نقل رایگان</div>
+                            </label>
+                        </div>
+                        @*  <div class="shipping-totals-outline">
+                        <label for="#" class="outline-radio">
+                        <input type="radio" name="payment_method" id="payment-option-online">
+                        <span class="outline-radio-check"></span>
+                        </label>
+                        <label for="#" class="shipping-totals-title-row">
+                        <div class="shipping-totals-title">حمل و نقل معمولی: 20,000 تومان</div>
+                        </label>
+                        </div>
+                        <span class="shipping-destination">حمل و نقل به خراسان شمالی</span>*@
+                    </div>
+                    <@*/li>*@ @* <li class="order-total">*@
+            <div>  مجموع:
+                        <h6> @sumTota.ToString("n0") تومان</h6>
+            </div>
+                    <@*/li>*@
+                   @* <li class="discount-code">*@
+                        <div class=" align-items-center">
+                            <div class="col-md-7 pr mt-5">
+                                <div class="coupon">
+                                @* <form action="#">
+                                    <input type="text" name="input-coupon" class="input-coupon-code" placeholder="كد تخفیف:">
+                                    <button class="btn btn-coupon" type="submit">اعمال</button>
+                                    </form>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl mt-12">
+                                    <a href="~/pay" class="btn btn-info">تسویه حساب</a>                                   
+                            </div>
+                        </div>
+                    @* </li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts
+    {
+    <script>
+
+        function AddCount(CartItemId) {
+            window.location.replace('/cart/add?CartItemId=' + CartItemId);
+        }
+
+        function lowCount(CartItemId) {
+            window.location.replace('/cart/LowOff?CartItemId=' + CartItemId);
+        }
+
+    </script>
+}

@@ -1,0 +1,33 @@
+﻿@using Store_Application.Services.Users.Queries.GetUsers;
+@model GetUserDto;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Adminlayout.cshtml";
+    string orderState = Context.Request.Query["orderState"];
+}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <section id="configuration">
+            <div class="col-sm-12">
+                <table class="table table-striped table-bordered zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 222px;">نام</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="ایمیل: activate to sort column ascending" style="width: 401px;">ایمیل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr role="row" class="odd">
+                            <td class="sorting_1">@Model.FullName</td>
+                            <td>@Model.Email</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <a href="~/admin/orders/index?orderState=@orderState" class="btn btn-info">بازگشت به لیست</a>
+            </div>
+        </section>
+    </div>
+</div>

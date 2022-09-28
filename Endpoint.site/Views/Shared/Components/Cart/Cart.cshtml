@@ -1,0 +1,61 @@
+﻿@using Store_Application.Services.Carts
+@model CartDto;
+@{
+    Layout = null;
+}
+
+<div class="span3">
+    <div class="cart-container" id="cartContainer">
+        <div class="cart">
+            <p class="items">سبد خرید <span class="dark-clr">(@Model.ProductCount)</span></p>
+            <p class="dark-clr hidden-tablet">@Model.SumAmount.ToString("n0")
+                        <span>تومان</span></p>
+            <a href="~/Cart" class="btn btn-danger">
+                <!-- <span class="icon icons-cart"></span> -->
+                <i class="icon-shopping-cart"></i>
+            </a>
+        </div>
+        <div class="open-panel">
+            @foreach (var item in Model.CartItems)
+                    {
+            <div class="item-in-cart clearfix">
+                <div class="image">
+                        <img src="~/@item.Images" width="124" height="124" alt="cart item" />
+                </div>
+                <div class="desc">
+                        <strong><a >@item.Product </a></strong>
+                    <span class="light-clr qty">
+                            تعداد : @item.Count
+                        &nbsp;
+                        <a href="#" class="icon-remove-sign" title="Remove Item"></a>
+                    </span>
+                </div>
+                <div class="price">
+                        @item.Price.ToString("n0")
+                        <span>تومان</span>
+                </div>
+            </div>
+            }
+
+            <div class="summary">
+                <div class="line">
+                    <div class="row-fluid">
+                        <div class="span6">هزینه ارسال :</div>
+                        <div class="span6 align-right">0</div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="row-fluid">
+                        <div class="span6">جمع کل :</div>
+                        @Model.SumAmount
+                        <span>تومان</span>
+                    </div>
+                </div>
+            </div>
+            <div class="proceed">
+                <a href="~/pay" class="btn btn-danger pull-right bold higher">تسویه حساب <i class="icon-shopping-cart"></i></a>
+        
+            </div>
+        </div>
+    </div>
+</div> <!-- /cart -->

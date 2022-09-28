@@ -1,0 +1,21 @@
+﻿@using Store_Application.Services.Common.Queries.GetMenuItem;
+@model List<MenuItemDto>;
+@{
+    Layout = null;
+}
+
+@foreach(var item in Model)
+{
+    <li class="dropdown">
+     <a href="#" class="dropdown-toggle"> @item.Name <b class="caret"></b> </a>
+        @if (item.Child.Count() > 0)
+        {
+            <ul class="dropdown-menu">
+                @foreach (var itemchild in item.Child)
+                {
+                    <li><a href="~/Products/Index?CatId=@itemchild.CatId">@itemchild.Name</a></li>
+                }
+            </ul>
+        }
+     </li>
+}
